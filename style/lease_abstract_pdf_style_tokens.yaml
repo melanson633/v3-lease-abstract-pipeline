@@ -1,0 +1,304 @@
+lease_abstract_pdf_style_tokens:
+  meta:
+    name: "RJK.AI Lease Abstract PDF"
+    intent: "Investment-grade, scan-first, calm, lender-ready"
+    page_size_default: "US Letter"
+    orientation_default: "Portrait"
+    orientation_rent_schedule: "Landscape"
+    export:
+      embed_fonts: true
+      fallback_font: "Arial"
+
+  typography:
+    font_family_primary: "Poppins"
+    font_family_fallback: "Arial"
+
+    h1_title:
+      font_family: "$typography.font_family_primary"
+      font_size_pt: 18
+      font_weight: 700
+      letter_case: "UPPERCASE"
+      color: "$colors.text_primary"
+      spacing:
+        margin_top_pt: 0
+        margin_bottom_pt: 10
+
+    h2_section_bar:
+      font_family: "$typography.font_family_primary"
+      font_size_pt: 15
+      font_weight: 700
+      letter_case: "UPPERCASE"
+      color: "$colors.on_primary"
+      background_color: "$colors.primary_ink_blue"
+      padding:
+        vertical_px: 8
+        horizontal_px: 10
+      spacing:
+        margin_top_pt: 14
+        margin_bottom_pt: 10
+
+    h3_subhead:
+      font_family: "$typography.font_family_primary"
+      font_size_pt: 13
+      font_weight: 600
+      letter_case: "AS_TYPED"
+      color: "$colors.primary_ink_blue"
+      spacing:
+        margin_top_pt: 10
+        margin_bottom_pt: 6
+
+    body:
+      font_family: "$typography.font_family_primary"
+      font_size_pt: 12
+      font_weight: 400
+      color: "$colors.text_primary"
+      line_height: 1.22
+      paragraph_spacing_after_pt: 6
+
+    metadata_small:
+      font_family: "$typography.font_family_primary"
+      font_size_pt: 10
+      font_weight: 400
+      color: "$colors.text_muted"
+      line_height: 1.15
+
+    citation_text:
+      font_family: "$typography.font_family_primary"
+      font_size_pt: 10
+      font_weight: 400
+      color: "$colors.text_muted"
+
+    citation_superscript:
+      font_family: "$typography.font_family_primary"
+      font_size_pt: 9
+      font_weight: 400
+      color: "$colors.text_muted"
+
+  colors:
+    primary_ink_blue: "#00304d"
+    rule_accent_blue: "#057abf"
+    text_primary: "#1a1a1a"
+    text_muted: "#6b7280"
+    on_primary: "#ffffff"
+
+    table:
+      header_fill: "$colors.primary_ink_blue"
+      header_text: "$colors.on_primary"
+      row_stripe_fill: "#f2f4f7"
+      border_light: "#d1d5db"
+      background: "#ffffff"
+
+  page:
+    margins_in:
+      top: 0.70
+      bottom: 0.70
+      left: 0.75
+      right: 0.75
+    alignment:
+      body: "left"
+      numbers_in_tables: "right"
+      dates_in_tables: "left"
+      justification: "rag_right"
+
+  header_footer:
+    header:
+      enabled: true
+      style: "$typography.metadata_small"
+      rule_under_header:
+        enabled: true
+        color: "$colors.rule_accent_blue"
+        thickness_pt: 0.75
+      content:
+        left: "Lease Abstract — {Tenant} | {Property Address}"
+        right: "{Generated Date}"
+    footer:
+      enabled: true
+      style: "$typography.metadata_small"
+      content:
+        left: "Source: {Lease Date} + amendments"
+        right: "Page {X} of {Y}"
+
+  layout:
+    page1:
+      title_alignment: "center"
+      structure_order:
+        - "H1_TITLE"
+        - "PROPERTY_TENANT_BLOCK"
+        - "SECTION_EXECUTIVE_SUMMARY"
+        - "SECTION_KEY_COMPLIANCE_FLAGS_IF_ANY"
+      property_tenant_block:
+        format: "two_column_label_value"
+        label_style: "$typography.h3_subhead"
+        value_style: "$typography.body"
+        label_color: "$colors.primary_ink_blue"
+        spacing_after_pt: 10
+
+    sections:
+      header_style: "$typography.h2_section_bar"
+      section_intro_sentence:
+        enabled: true
+        style: "$typography.body"
+        spacing_after_pt: 8
+
+    rent_schedule:
+      orientation: "Landscape"
+      table_width_behavior: "fit_within_margins"
+      footnote_below_table:
+        enabled: true
+        style: "$typography.metadata_small"
+
+    open_items_underwriting_notes:
+      presentation: "standard_section"
+      use_callout_box: false
+      bullets:
+        style: "$typography.body"
+        emphasis:
+          unknowns: "bold"
+          status_terms: "bold"
+
+  tables:
+    defaults:
+      font_body: "$typography.body"
+      font_header:
+        font_family: "$typography.font_family_primary"
+        font_size_pt: 12
+        font_weight: 700
+      header:
+        fill: "$colors.table.header_fill"
+        text_color: "$colors.table.header_text"
+        vertical_alignment: "middle"
+      body_rows:
+        zebra_striping: true
+        stripe_fill: "$colors.table.row_stripe_fill"
+        background_fill: "$colors.table.background"
+      borders:
+        style: "light"
+        color: "$colors.table.border_light"
+        thickness_pt: 0.5
+        vertical_gridlines: false
+        horizontal_gridlines: true
+      padding:
+        cell_padding_px: 8
+      first_column_emphasis:
+        enabled: true
+        font_weight: 600
+        text_color: "$colors.primary_ink_blue"
+      numeric_columns:
+        alignment: "right"
+        currency_format: "$#,##0.00"
+      date_columns:
+        alignment: "left"
+        date_format: "MM-DD-YYYY"
+
+  citations:
+    system: "superscript_tokens_with_section_citation_strip"
+    token_scope: "per_section_restart"
+    token_format:
+      style: "$typography.citation_superscript"
+      placement: "immediately_after_fact"
+    citation_strip:
+      location: "below_table_or_end_of_section"
+      style: "$typography.citation_text"
+      separator_rule:
+        enabled: true
+        color: "$colors.table.border_light"
+        thickness_pt: 0.5
+      layout:
+        columns: 2
+        item_format: "{token} = {Doc} p{page} {ref}"
+      reference_shorthand_rules:
+        doc_abbreviations:
+          original_lease: "OL"
+          commencement_memo: "CM"
+          amendment: "AMD"
+          exhibit: "EX"
+        ref_patterns:
+          section: "§{n}"
+          article: "Art. {n}"
+          exhibit: "Ex. {letter}"
+          page_only: "p{n}"
+
+  emphasis_rules:
+    bold_usage:
+      allow_for:
+        - "key numeric values (rent, TI, deposit)"
+        - "status terms (TBD, Not Specified)"
+        - "critical legal structure terms (NNN, Modified Gross)"
+      avoid_for:
+        - "full sentences"
+        - "multiple values in the same line unless necessary"
+    rules_lines:
+      avoid_heavy_black_rules: true
+      use_thin_rules_only:
+        thickness_pt_max: 1.0
+
+  content_order_blueprint:
+    recommended_section_sequence:
+      - "Executive Summary"
+      - "Key Dates & Notice Requirements"
+      - "Rent Schedule (Landscape)"
+      - "Additional Rent / Expense Recoveries"
+      - "Security Deposit / LOC"
+      - "Tenant Improvements (TI) / Allowances"
+      - "Options"
+      - "Use / Operating Covenants"
+      - "Maintenance Matrix"
+      - "Insurance"
+      - "Assignment / Subletting"
+      - "Defaults / Remedies"
+      - "Notices"
+      - "Open Items / Underwriting Notes"
+      - "Document Inventory"
+
+  metadata_section:
+    style: "$typography.metadata_small"
+    placement: "below_title_block"
+    fields_to_display:
+      - "Schema Version"
+      - "Extraction Date"
+      - "Source Documents"
+    spacing_after_pt: 12
+
+  change_log_rendering:
+    presentation: "table"
+    table_style: "$tables.defaults"
+    columns:
+      - "Field"
+      - "Old Value"
+      - "New Value"
+      - "Effective Date"
+      - "Source"
+      - "Citation"
+    highlight_significant_changes:
+      enabled: true
+      highlight_color: "#fff3cd"
+      significance_criteria:
+        - "rent changes"
+        - "term changes"
+        - "option changes"
+        - "security deposit changes"
+
+  page_break_logic:
+    rule: "before_each_h2_after_page1"
+    exceptions:
+      - "never inside table blocks"
+      - "never inside fenced code blocks"
+      - "never between heading and first content block"
+
+  callout_box:
+    enabled: true
+    background_color: "#f8f9fa"
+    border_left_color: "$colors.rule_accent_blue"
+    border_left_width_pt: 3
+    padding_px: 10
+    font_style: "$typography.body"
+    use_for:
+      - "major change_log items"
+      - "option notice deadlines"
+      - "compliance flags"
+
+  long_value_handling:
+    max_cell_chars: 140
+    overflow_strategy: "wrap"
+    truncation_indicator: "..."
+    continuation_note: "See full text in section below"

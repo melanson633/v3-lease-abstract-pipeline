@@ -1,0 +1,830 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LeaseAbstract",
+  "type": "object",
+  "properties": {
+    "Metadata": {
+      "type": "object",
+      "description": "High-level information about the lease abstraction and source documents",
+      "properties": {
+        "SchemaVersion": {
+          "type": ["string", "null"],
+          "default": "4.0.0",
+          "description": "Version of the schema used for this extraction"
+        },
+        "Extraction": {
+          "type": "object",
+          "description": "Information about the extraction process",
+          "properties": {
+            "ExtractorVersion": {
+              "type": ["string", "null"],
+              "description": "Version of the extraction engine"
+            },
+            "GenerationTimestamp": {
+              "type": ["string", "null"],
+              "format": "date-time",
+              "description": "Timestamp when the abstraction was generated"
+            },
+            "SourceDocuments": {
+              "type": ["array", "null"],
+              "items": { "type": "string" },
+              "description": "List of filenames or identifiers for documents used"
+            }
+          }
+        },
+        "ClientMode": {
+          "type": ["string", "null"],
+          "description": "Client-specified extraction mode or profile"
+        },
+        "PortfolioName": {
+          "type": ["string", "null"],
+          "description": "Name of the portfolio to which this lease belongs"
+        },
+        "Amendments": {
+          "type": ["array", "null"],
+          "items": { "type": "string" },
+          "description": "Identifiers of amendments incorporated into the lease"
+        },
+        "Compliance": {
+          "type": ["array", "null"],
+          "items": { "type": "string" },
+          "description": "Applicable accounting or regulatory standards (e.g., ASC 842, IFRS 16)"
+        },
+        "Documents": {
+          "type": ["array", "null"],
+          "items": { "type": "object" },
+          "description": "Supplementary documents or exhibits"
+        },
+        "Notes": {
+          "type": ["string", "null"],
+          "description": "General notes about the abstraction"
+        },
+        "LeaseCurrency": {
+          "type": ["string", "null"],
+          "description": "Currency in which monetary amounts are denominated (e.g., USD, EUR)"
+        },
+        "LeaseStatus": {
+          "type": ["string", "null"],
+          "description": "Current status of the lease (e.g., Active, Terminated, Expired)"
+        }
+      }
+    },
+    "Parties": {
+      "type": "object",
+      "description": "Information about the parties to the lease",
+      "properties": {
+        "Landlord": {
+          "type": ["object", "null"],
+          "description": "Landlord or lessor details",
+          "properties": {
+            "Name": { "type": ["string", "null"] },
+            "EntityType": {
+              "type": ["string", "null"],
+              "description": "Legal form of the landlord (e.g., LLC, Corp.)"
+            },
+            "Jurisdiction": {
+              "type": ["string", "null"],
+              "description": "State or country of organization"
+            },
+            "TradeName": {
+              "type": ["string", "null"],
+              "description": "Doing-business-as name, if any"
+            },
+            "Address": {
+              "type": ["object", "null"],
+              "properties": {
+                "Street": { "type": ["string", "null"] },
+                "City": { "type": ["string", "null"] },
+                "State": { "type": ["string", "null"] },
+                "PostalCode": { "type": ["string", "null"] },
+                "Country": { "type": ["string", "null"] }
+              }
+            }
+          }
+        },
+        "Tenant": {
+          "type": ["object", "null"],
+          "description": "Tenant or lessee details",
+          "properties": {
+            "Name": { "type": ["string", "null"] },
+            "EntityType": { "type": ["string", "null"] },
+            "Jurisdiction": { "type": ["string", "null"] },
+            "TradeName": { "type": ["string", "null"] },
+            "Address": {
+              "type": ["object", "null"],
+              "properties": {
+                "Street": { "type": ["string", "null"] },
+                "City": { "type": ["string", "null"] },
+                "State": { "type": ["string", "null"] },
+                "PostalCode": { "type": ["string", "null"] },
+                "Country": { "type": ["string", "null"] }
+              }
+            }
+          }
+        },
+        "Guarantor": {
+          "type": ["object", "null"],
+          "description": "Guarantor details, if any (flattened: Name + Relationship + Terms only)",
+          "properties": {
+            "Name": { "type": ["string", "null"] },
+            "Relationship": {
+              "type": ["string", "null"],
+              "description": "Relationship of guarantor to tenant"
+            },
+            "Terms": {
+              "type": ["string", "null"],
+              "description": "Summary of guaranty terms and scope"
+            }
+          }
+        }
+      }
+    },
+    "Premises": {
+      "type": "object",
+      "description": "Details of the leased premises",
+      "properties": {
+        "Address": {
+          "type": ["string", "null"],
+          "description": "Street address of the premises"
+        },
+        "BuildingName": { "type": ["string", "null"] },
+        "Suite": { "type": ["string", "null"] },
+        "RSF": {
+          "type": ["number", "null"],
+          "description": "Rentable square footage of the premises"
+        },
+        "BuildingRSF": {
+          "type": ["number", "null"],
+          "description": "Total rentable area of the building"
+        },
+        "SpaceUseType": {
+          "type": ["string", "null"],
+          "description": "Type of space (office, retail, industrial, warehouse, etc.)"
+        },
+        "Condition": {
+          "type": ["string", "null"],
+          "description": "Condition of the premises (e.g., 'as-is'); also captures miscellaneous premises details such as storage, roof rights, outside seating, floor distribution"
+        },
+        "Parking": {
+          "type": ["object", "null"],
+          "description": "Parking allocations and terms",
+          "properties": {
+            "Spaces": {
+              "type": ["number", "null"],
+              "description": "Number of parking spaces allocated"
+            },
+            "Type": {
+              "type": ["string", "null"],
+              "description": "Parking type (e.g., reserved, unreserved)"
+            },
+            "Cost": {
+              "type": ["number", "null"],
+              "description": "Monthly or annual cost, if any"
+            },
+            "AdditionalInfo": {
+              "type": ["string", "null"],
+              "description": "Any other parking terms (e.g., valet, covered)"
+            }
+          }
+        }
+      }
+    },
+    "Dates": {
+      "type": "object",
+      "description": "Key dates and time periods in the lease",
+      "properties": {
+        "LeaseExecutionDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the lease was fully executed"
+        },
+        "OriginalLeaseDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date of the original lease document"
+        },
+        "CommencementDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the lease term commences"
+        },
+        "RentCommencementDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date rent obligations commence (may differ from CommencementDate)"
+        },
+        "ExpirationDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the lease term ends"
+        },
+        "TermMonths": {
+          "type": ["integer", "null"],
+          "description": "Length of initial term in months"
+        },
+        "LeaseYearDefinition": {
+          "type": ["string", "null"],
+          "description": "Definition of a lease year (e.g., calendar year, 12-month period following commencement)"
+        },
+        "DateNotes": {
+          "type": ["string", "null"],
+          "description": "Free-text field for recording date definitions when actual dates are unknown or contingent"
+        }
+      }
+    },
+    "Financials": {
+      "type": "object",
+      "description": "Financial terms of the lease",
+      "properties": {
+        "BaseRent": {
+          "type": ["object", "null"],
+          "properties": {
+            "CommencementDate": {
+              "type": ["string", "null"],
+              "format": "date"
+            },
+            "EscalationMethod": {
+              "type": ["string", "null"],
+              "description": "Method of rent escalation (e.g., Fixed, CPI)"
+            },
+            "Schedule": {
+              "type": ["array", "null"],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "period": {
+                    "type": ["string", "null"],
+                    "description": "Descriptor of lease period (e.g., Year 1)"
+                  },
+                  "startDate": {
+                    "type": ["string", "null"],
+                    "format": "date"
+                  },
+                  "endDate": {
+                    "type": ["string", "null"],
+                    "format": "date"
+                  },
+                  "monthlyAmount": { "type": ["number", "null"] },
+                  "annualAmount": { "type": ["number", "null"] },
+                  "baseRentPSF": {
+                    "type": ["number", "null"],
+                    "description": "Rent per square foot per year for the period"
+                  }
+                }
+              }
+            },
+            "Abatement": {
+              "type": ["object", "null"],
+              "description": "Base rent abatements or free rent periods",
+              "properties": {
+                "Schedule": {
+                  "type": ["array", "null"],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "period": { "type": ["string", "null"] },
+                      "monthsFree": { "type": ["integer", "null"] },
+                      "amount": { "type": ["number", "null"] },
+                      "reason": { "type": ["string", "null"] }
+                    }
+                  }
+                }
+              }
+            },
+            "PercentageRent": {
+              "type": ["object", "null"],
+              "description": "Retail percentage rent provisions",
+              "properties": {
+                "Percent": {
+                  "type": ["number", "null"],
+                  "description": "Percentage of gross sales owed as rent"
+                },
+                "Breakpoint": {
+                  "type": ["number", "null"],
+                  "description": "Sales threshold at which percentage rent applies"
+                },
+                "ReportingPeriod": {
+                  "type": ["string", "null"],
+                  "description": "Frequency of sales reporting (e.g., monthly, quarterly)"
+                }
+              }
+            }
+          }
+        },
+        "AdditionalRent": {
+          "type": ["object", "null"],
+          "description": "Additional rent components such as operating expenses, taxes and insurance",
+          "properties": {
+            "RecoveryType": {
+              "type": ["string", "null"],
+              "description": "Gross, Net, Modified Gross, Triple Net, etc."
+            },
+            "BaseYears": {
+              "type": ["object", "null"],
+              "properties": {
+                "OperatingExpenses": {
+                  "type": ["integer", "null"],
+                  "description": "Base year for operating expenses"
+                },
+                "Taxes": {
+                  "type": ["integer", "null"],
+                  "description": "Base year for real estate taxes"
+                }
+              }
+            },
+            "ProRataShare": {
+              "type": ["number", "null"],
+              "description": "Tenant's share of variable expenses"
+            },
+            "ExpenseStructure": {
+              "type": ["object", "null"],
+              "description": "Unified expense recovery structure (replaces v3 CAMCharges + ExpenseRecoveries). Captures both landlord-defined budgets and tenant pass-through obligations.",
+              "properties": {
+                "OperatingExpenses": {
+                  "type": ["string", "null"],
+                  "description": "Description of operating expenses included/excluded"
+                },
+                "Taxes": {
+                  "type": ["string", "null"],
+                  "description": "Description of real estate tax obligations"
+                },
+                "Insurance": {
+                  "type": ["string", "null"],
+                  "description": "Description of insurance obligations"
+                },
+                "Utilities": {
+                  "type": ["string", "null"],
+                  "description": "Utility cost sharing"
+                },
+                "AdminManagementFee": {
+                  "type": ["number", "null"],
+                  "description": "Administrative or management fee percentage or amount"
+                }
+              }
+            },
+            "OtherCharges": {
+              "type": ["array", "null"],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Name": { "type": ["string", "null"] },
+                  "Amount": { "type": ["number", "null"] },
+                  "Description": { "type": ["string", "null"] }
+                }
+              },
+              "description": "Any other recurring charges not captured above"
+            },
+            "ExpenseStopAmount": {
+              "type": ["number", "null"],
+              "description": "Maximum amount landlord pays before tenant bears expenses"
+            },
+            "CAMCap": {
+              "type": ["object", "null"],
+              "properties": {
+                "Percent": {
+                  "type": ["number", "null"],
+                  "description": "Percentage cap on CAM increases"
+                },
+                "Scope": {
+                  "type": ["string", "null"],
+                  "description": "Scope of expenses subject to cap"
+                }
+              }
+            },
+            "BillingCycle": {
+              "type": ["string", "null"],
+              "description": "Billing cycle for CAM or operating expenses"
+            },
+            "ReconciliationTerms": {
+              "type": ["string", "null"],
+              "description": "Terms describing annual reconciliation of CAM or operating expenses"
+            },
+            "AuditRights": {
+              "type": ["string", "null"],
+              "description": "Tenant rights to audit landlord's expense records"
+            }
+          }
+        },
+        "SecurityDeposit": {
+          "type": ["object", "null"],
+          "properties": {
+            "Amount": { "type": ["number", "null"] },
+            "Form": {
+              "type": ["string", "null"],
+              "description": "Cash, letter of credit, etc."
+            },
+            "ReturnConditions": {
+              "type": ["string", "null"],
+              "description": "Conditions for return of deposit"
+            },
+            "LetterOfCredit": {
+              "type": ["string", "null"],
+              "description": "LOC details (bank requirements, auto-renewal, draw conditions, conversion terms) as summary text"
+            }
+          }
+        },
+        "TIAllowance": {
+          "type": ["object", "null"],
+          "description": "Tenant improvement allowance details",
+          "properties": {
+            "Amount": { "type": ["number", "null"] },
+            "RatePerSF": { "type": ["number", "null"] },
+            "Notes": { "type": ["string", "null"] }
+          }
+        },
+        "PrepaidRent": {
+          "type": ["object", "null"],
+          "properties": {
+            "Amount": { "type": ["number", "null"] }
+          }
+        },
+        "LateFees": {
+          "type": ["object", "null"],
+          "properties": {
+            "RatePercent": {
+              "type": ["number", "null"],
+              "description": "Late fee as a percentage of overdue rent (e.g., 5 means 5%)"
+            },
+            "FlatAmount": {
+              "type": ["number", "null"],
+              "description": "Late fee as a fixed dollar amount"
+            },
+            "RateDescription": {
+              "type": ["string", "null"],
+              "description": "Free-text description of the late fee when it cannot be expressed as a simple percent or flat amount"
+            },
+            "GracePeriodDays": { "type": ["integer", "null"] }
+          }
+        },
+        "PaymentTerms": {
+          "type": ["object", "null"],
+          "properties": {
+            "Frequency": {
+              "type": ["string", "null"],
+              "description": "Billing frequency for rent payments (e.g., monthly)"
+            },
+            "DueDate": {
+              "type": ["string", "null"],
+              "description": "Date or day by which rent is due (e.g., 1st of month)"
+            }
+          }
+        },
+        "Holdover": {
+          "type": ["object", "null"],
+          "properties": {
+            "Multiplier": {
+              "type": ["number", "null"],
+              "description": "Multiplier applied to base rent during holdover"
+            },
+            "DamagesLiability": {
+              "type": ["string", "null"],
+              "description": "Description of tenant liability for damages during holdover"
+            }
+          }
+        }
+      }
+    },
+    "Options": {
+      "type": "object",
+      "description": "Rights and options available to the tenant",
+      "properties": {
+        "RenewalOptions": {
+          "type": ["object", "null"],
+          "properties": {
+            "NumberOfOptions": { "type": ["integer", "null"] },
+            "TermMonthsPerOption": {
+              "type": ["array", "null"],
+              "items": { "type": ["integer", "null"] }
+            },
+            "NoticePeriodDays": { "type": ["integer", "null"] },
+            "RentAdjustmentMethod": {
+              "type": ["string", "null"],
+              "description": "Method for determining rent during renewal (e.g., Market, Fixed, CPI)"
+            },
+            "OtherTerms": { "type": ["string", "null"] }
+          }
+        },
+        "ExpansionRights": {
+          "type": ["object", "null"],
+          "properties": {
+            "Description": { "type": ["string", "null"] },
+            "NoticePeriodDays": { "type": ["integer", "null"] },
+            "AdditionalSpace": {
+              "type": ["number", "null"],
+              "description": "Square footage available under expansion"
+            }
+          }
+        },
+        "TerminationOptions": {
+          "type": ["object", "null"],
+          "properties": {
+            "EarlyTerminationRight": { "type": ["boolean", "null"] },
+            "TerminationDate": {
+              "type": ["string", "null"],
+              "description": "Date on which termination may occur"
+            },
+            "TerminationFee": { "type": ["number", "null"] },
+            "NoticePeriodDays": { "type": ["integer", "null"] }
+          }
+        },
+        "RightOfFirstOffer": {
+          "type": ["object", "null"],
+          "properties": {
+            "Description": { "type": ["string", "null"] },
+            "NoticePeriodDays": { "type": ["integer", "null"] }
+          }
+        },
+        "RightOfFirstRefusal": {
+          "type": ["object", "null"],
+          "properties": {
+            "Description": { "type": ["string", "null"] },
+            "NoticePeriodDays": { "type": ["integer", "null"] }
+          }
+        },
+        "ExclusiveUseRights": {
+          "type": ["string", "null"],
+          "description": "Exclusive use provisions granting the tenant sole right to conduct certain business within the property"
+        },
+        "CoTenancy": {
+          "type": ["object", "null"],
+          "properties": {
+            "Requirement": {
+              "type": ["string", "null"],
+              "description": "Condition (e.g., presence of anchor tenant)"
+            },
+            "Remedies": {
+              "type": ["string", "null"],
+              "description": "Tenant remedies if co-tenancy condition is not met"
+            }
+          }
+        },
+        "GoDarkRights": {
+          "type": ["string", "null"],
+          "description": "Terms under which tenant may cease operations (go dark); includes continuous operation requirements"
+        },
+        "ContractionOption": {
+          "type": ["string", "null"],
+          "description": "Terms under which tenant may reduce leased space"
+        },
+        "PurchaseOption": {
+          "type": ["string", "null"],
+          "description": "Terms of any purchase option granted to the tenant"
+        }
+      }
+    },
+    "Clauses": {
+      "type": "object",
+      "description": "Operational, legal and miscellaneous clauses",
+      "properties": {
+        "Use": {
+          "type": ["string", "null"],
+          "description": "Permitted use of the premises"
+        },
+        "AssignmentAndSubletting": {
+          "type": ["object", "null"],
+          "properties": {
+            "Allowed": { "type": ["boolean", "null"] },
+            "Restrictions": { "type": ["string", "null"] },
+            "ProfitSharing": {
+              "type": ["string", "null"],
+              "description": "Terms regarding sharing of profits from assignment or sublease"
+            },
+            "PermittedTransfers": {
+              "type": ["string", "null"],
+              "description": "Categories of transfers that do not require landlord consent"
+            },
+            "RecaptureRight": {
+              "type": ["boolean", "null"],
+              "description": "Whether landlord can recapture the premises upon transfer request"
+            },
+            "OriginalTenantLiability": {
+              "type": ["string", "null"],
+              "description": "Extent of original tenant's liability after assignment"
+            },
+            "ConditionsForConsent": {
+              "type": ["string", "null"],
+              "description": "Conditions tenant must meet to obtain landlord consent"
+            }
+          }
+        },
+        "Insurance": {
+          "type": ["object", "null"],
+          "description": "Consolidated insurance requirements (tenant + landlord)",
+          "properties": {
+            "Summary": {
+              "type": ["string", "null"],
+              "description": "General description of insurance obligations"
+            },
+            "TenantRequirements": {
+              "type": ["string", "null"],
+              "description": "Summary of all tenant insurance requirements (GL, property, business interruption, workers comp, auto, waiver of subrogation, additional insured, COI due date)"
+            },
+            "LandlordRequirements": {
+              "type": ["string", "null"],
+              "description": "Summary of landlord insurance obligations (property, liability, self-insurance)"
+            }
+          }
+        },
+        "Maintenance": {
+          "type": ["object", "null"],
+          "description": "Consolidated maintenance responsibilities",
+          "properties": {
+            "TenantResponsibilities": { "type": ["string", "null"] },
+            "LandlordResponsibilities": { "type": ["string", "null"] },
+            "SharedResponsibilities": {
+              "type": ["string", "null"],
+              "description": "Shared responsibilities and thresholds (structural, building systems, interior, common area, minor repair threshold, step-in rights)"
+            }
+          }
+        },
+        "GoverningLaw": { "type": ["string", "null"] },
+        "DefaultRemedies": {
+          "type": ["object", "null"],
+          "properties": {
+            "EventsOfDefault": {
+              "type": ["string", "null"],
+              "description": "Definition of default events"
+            },
+            "CurePeriodDays": {
+              "type": ["integer", "null"],
+              "description": "Days allowed to cure a default"
+            },
+            "Remedies": {
+              "type": ["string", "null"],
+              "description": "Remedies available to the non-defaulting party"
+            }
+          }
+        },
+        "Guaranty": {
+          "type": ["object", "null"],
+          "properties": {
+            "Guarantor": { "type": ["string", "null"] },
+            "Terms": { "type": ["string", "null"] },
+            "Scope": {
+              "type": ["string", "null"],
+              "description": "Scope of guaranty obligations (e.g., full, limited)"
+            },
+            "BurnOff": {
+              "format": "date",
+              "type": ["string", "null"],
+              "description": "Date or condition when guaranty obligations expire"
+            }
+          }
+        },
+        "HazardousMaterials": {
+          "type": ["string", "null"],
+          "description": "Restrictions on use or storage of hazardous materials"
+        },
+        "Condemnation": {
+          "type": ["string", "null"],
+          "description": "Rights and obligations in the event of condemnation or eminent domain"
+        },
+        "DamageDestruction": {
+          "type": ["string", "null"],
+          "description": "Casualty and destruction provisions, including restoration and rent abatement"
+        },
+        "EnvironmentalCompliance": {
+          "type": ["string", "null"],
+          "description": "Environmental compliance obligations, indemnities, and ADA/disability access provisions"
+        },
+        "SNDA": {
+          "type": ["string", "null"],
+          "description": "Subordination, Non-Disturbance and Attornment provisions"
+        },
+        "Estoppel": {
+          "type": ["string", "null"],
+          "description": "Obligations to provide estoppel certificates"
+        },
+        "Notices": {
+          "type": ["string", "null"],
+          "description": "Notice provisions and addresses for service"
+        },
+        "Signage": {
+          "type": ["string", "null"],
+          "description": "Signage rights and restrictions"
+        },
+        "ForceMajeure": {
+          "type": ["string", "null"],
+          "description": "Force majeure provisions including pandemics and other unforeseen events"
+        },
+        "DisputeResolution": {
+          "type": ["string", "null"],
+          "description": "Procedures for resolving disputes (mediation, arbitration, litigation)"
+        },
+        "OtherClauses": {
+          "type": ["string", "null"],
+          "description": "Miscellaneous provisions not captured elsewhere"
+        }
+      }
+    },
+    "Utilities": {
+      "type": "object",
+      "description": "Utilities and services available or required",
+      "properties": {
+        "Summary": {
+          "type": ["string", "null"],
+          "description": "General summary of utility provisions and service arrangements"
+        },
+        "ResponsibilityAllocation": {
+          "type": ["string", "null"],
+          "description": "Allocation of utility responsibilities between landlord and tenant (electricity, water, gas, HVAC, janitorial, trash, elevator, other services)"
+        }
+      }
+    },
+    "change_log": {
+      "type": ["array", "null"],
+      "description": "Record of all field-level changes across amendments and modifying instruments. Each entry captures the before/after state, source document, and impact assessment.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field_path": {
+            "type": "string",
+            "description": "Schema dot-notation path to the changed field (e.g., 'Financials.BaseRent.Schedule')"
+          },
+          "old_value": {
+            "description": "Value before the change (any type)"
+          },
+          "new_value": {
+            "description": "Value after the change (any type)"
+          },
+          "effective_date": {
+            "type": ["string", "null"],
+            "format": "date",
+            "description": "Date the change takes effect"
+          },
+          "source_document": {
+            "type": ["string", "null"],
+            "description": "Document identifier (e.g., 'A1', 'CM', 'OL')"
+          },
+          "citation": {
+            "type": ["string", "null"],
+            "description": "Precise citation from the source document (e.g., 'A1 p3 §2.1')"
+          },
+          "impact_notes": {
+            "type": ["string", "null"],
+            "description": "Brief note on the significance or downstream impact of this change"
+          }
+        }
+      }
+    },
+    "pending_fields": {
+      "type": ["array", "null"],
+      "description": "Fields that could not be fully extracted during the current pass. Used for progressive extraction and latency-safe partial outputs.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Schema dot-notation path of the pending field"
+          },
+          "reason": {
+            "type": ["string", "null"],
+            "description": "Why the field could not be extracted"
+          },
+          "where_to_find": {
+            "type": ["string", "null"],
+            "description": "Guidance on which document or exhibit likely contains the value"
+          },
+          "hint": {
+            "type": ["string", "null"],
+            "description": "Partial information or definition text that may help resolve the field"
+          }
+        }
+      }
+    },
+    "traceability": {
+      "type": ["object", "null"],
+      "description": "Field-level traceability metadata mapping schema paths to their extraction provenance.",
+      "properties": {
+        "extractedFieldsMetadata": {
+          "type": ["object", "null"],
+          "description": "Map of field paths to their extraction metadata. Keys are dot-notation schema paths.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "citation": {
+                "type": ["string", "null"],
+                "description": "Source citation (e.g., 'OL p5 §4.1')"
+              },
+              "confidence": {
+                "type": ["number", "null"],
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Confidence score from 0.0 (no confidence) to 1.0 (fully confirmed)"
+              },
+              "validation_status": {
+                "type": ["string", "null"],
+                "enum": ["confirmed", "pending", "uncertain", "flagged", "missing", null],
+                "description": "Current validation state of the field"
+              },
+              "notes": {
+                "type": ["string", "null"],
+                "description": "Additional context about the extraction"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
