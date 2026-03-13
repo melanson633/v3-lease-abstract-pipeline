@@ -71,16 +71,8 @@
 
 ---
 
-## 7) QA Checklist (Before Delivery)
-- [ ] Executive Fact Sheet is on Page 1
-- [ ] Page breaks are sensible; no mid-table truncation
-- [ ] Tables: no clipping, no overflow, wrapping works, citations readable
-- [ ] Header row repeats on multi-page tables (if supported)
-- [ ] No orphaned headings at page bottom
-- [ ] No missing glyphs / broken encodings
-- [ ] PDF opens cleanly and page count is reasonable
-- [ ] Date format is MM-DD-YYYY throughout the abstract
-- [ ] All financial figures have citations
+## 7) QA Checklist
+Consolidated QA checklist is in the lease-render skill body. Refer to that for the complete pre-delivery checklist.
 
 ---
 

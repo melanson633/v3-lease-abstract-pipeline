@@ -11,11 +11,11 @@
 
 ---
 
-**Citation format, confidence scale, and validation status:** See `Configuration/shared_constants.md`.
+Citation format, confidence scale, and validation status: per `config/shared_constants.md`.
 
 ## Confidence Targets by Pass
-- **Pass 1 fields:** Must achieve ≥0.9 confidence for core terms (rent, dates, parties). Dates with definition-only values get confidence 0.0 and status `pending`.
-- **Pass 2 fields:** Target ≥0.7 confidence. Summary-first approach is acceptable.
+- **Pass 1 fields:** >=0.9 for core terms (rent, dates, parties). Definition-only dates get confidence 0.0, status `pending`.
+- **Pass 2 fields:** >=0.7. Summary-first approach acceptable.
 - **Pass 3 fields:** Extract-if-present; confidence reflects clarity of source language.
 
 ## Pass 1 Blocking vs Non-Blocking
@@ -214,7 +214,4 @@ When a field cannot be extracted, add it to the `pending_fields` array:
 
 ---
 
-## Minimal "single-tenant + document stack" reminders (routing, not extraction logic)
-- Single-tenant only: populate only one Tenant and one Premises set.
-- Document precedence: Original Lease (OL) → Commencement Memo (CM) → Amendments, sequentially superseding.
-- If CM/amendments are not provided: keep date “definitions” in notes and leave actual dates null (Pending).
+Single-tenant rule and document precedence: per CLAUDE.md hard constraints.

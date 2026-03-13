@@ -1,47 +1,54 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## What This Is
+LeaseGPT (shortcut.ai_cre): modular commercial lease extraction + abstraction system.
+Not a traditional software project — contains structured knowledge files for LLM platforms.
+Request-driven: activate only the skill matching the user's deliverable.
 
-## What This Project Is
+## Hard Constraints (Non-Negotiable)
 
-This is **LeaseGPT (shortcut.ai_cre)** — a modular commercial lease extraction and abstraction system. It is **not a traditional software project**. There is no source code, no build system, no package manager, and no tests. The repository contains structured documentation, JSON schemas, procedural knowledge files, and style definitions that are uploaded as knowledge files to an LLM platform (ChatGPT/Claude).
+### Single-Tenant Rule
+- Each run processes exactly one tenant/leaseholder.
+- Multiple documents allowed only if they all relate to the same tenant.
+- If multiple tenants detected, **stop** and ask the user to select which tenant to process.
+- Subtenants and guarantors do not count as separate tenants.
 
-## Repository Structure
+### Sequential Supersession
+- Process documents in order: OL → CM → A1..An → other modifying instruments.
+- Later documents override or expand earlier terms; output represents the **current effective lease state**.
+- If ordering is unclear and changes meaning, ask a clarifying question.
 
-- `config/` — System prompt (v3.0.0) and shared constants (confidence scale, validation status, citation format, date conventions)
-- `schemas/` — Canonical JSON schema (v4.0.0) defining all lease fields, plus the progressive extraction priority map (Pass 1/2/3)
-- `procedures/` — Four self-contained execution modules: extraction, abstraction, PDF rendering, CSV/Excel export
-- `style/` — Markdown authoring rules, PDF presentation standards, and YAML design tokens (typography, colors, spacing)
-- `docs/` — Requirements spec, workflow decision routing, and directory navigation guide
+### Per-Field Traceability
+- Every extracted field must carry citation, confidence, and validation_status.
+- See `config/shared_constants.md` for the confidence scale, validation status enum, and citation format.
+- Never invent missing facts; use `null` + pending notes when needed.
 
-## Architecture
+### Quality Bar
+- Institutional-grade: clean formatting, consistent numerics/dates, comprehensive citations, validation checks.
+- Do not overfit to examples; treat them as minimum quality bar.
 
-The system has four request-driven operating modes, each backed by its own procedure file:
+### No Legal Advice
+- Summarize obligations and risks; do not provide legal opinions.
+- Use `flag:` or `observation:` for interpretive points.
 
-1. **Extract** → `extraction_procedure_refined.md` → Produces `lease_state` JSON + `change_log` + `pending_fields` + `traceability`
-2. **Abstract** → `abstraction_procedure_refined.md` → Produces markdown lease abstract from validated `lease_state`
-3. **Render** → `render_procedure_pdf.md` → Converts markdown abstract to styled PDF
-4. **Export** → `export_procedure_refined.md` → Produces CSV/XLSX workbooks from `lease_state`
+## Shared Constants
+Read `config/shared_constants.md` for: schema version, confidence scale, validation status enum, citation format, date conventions, and document processing order.
 
-### Critical Design Constraints
+## Skill Routing
 
-- **Single-tenant rule**: Each run processes exactly one leaseholder. Multiple documents are allowed only if they relate to the same tenant. If multiple tenants are detected, the system must stop and ask for clarification.
-- **Sequential supersession**: Documents processed in order OL → CM → A1 → A2 → ... Later documents override earlier terms. The final output reflects current effective lease state.
-- **Per-field traceability**: Every extracted field carries `citation` (format: `DOC pPAGE REF`), `confidence` (0.0–1.0), and `validation_status` (confirmed/pending/uncertain/flagged/missing).
-- **Progressive multi-pass extraction**: Pass 1 (critical business terms, ~99% target) is returned promptly; Pass 2 (financial/operating) and Pass 3 (legal/edge clauses) enrich if time remains.
+| User intent | Skill |
+|---|---|
+| extract, JSON, schema, validated data | lease-extract |
+| abstract, summary, investment-grade | lease-abstract |
+| PDF, render, downloadable report | lease-render |
+| CSV, Excel, export, rollup, spreadsheet | lease-export |
 
-### Schema
+If the user does not specify output type, ask:
+> "Do you want (a) extraction JSON, (b) markdown abstract, (c) PDF, or (d) CSV/Excel exports?"
 
-`schemas/v4_unified_schema.json` (JSON Schema draft-07) is the canonical data contract. Top-level sections: Metadata, Parties, Premises, Dates, Financials, Options, Clauses, Utilities. All procedures and exports must conform to this schema.
-
-### Style Standards
-
-- Dates in JSON/exports: `YYYY-MM-DD`; in abstracts/PDFs: `MM-DD-YYYY`
-- Currency: `$1,234.56` with commas and decimals
-- Citations inline in narrative: `(OL p5 §4.1)`; in tables: dedicated Citation column
-- Markdown tables: max 7 columns, GitHub-flavored pipes
-- PDF design tokens in `style/lease_abstract_pdf_style_tokens.yaml`: Poppins font, ink blue `#00304d` primary, US Letter paper
-
-## Deployment
-
-To deploy, copy `config/system_prompt.md` into the LLM platform's system instructions, then upload knowledge files in the order listed in `docs/README.md`.
+## Operating Rules
+- Be concise; prioritize accuracy, precision, and traceability.
+- Do not reproduce knowledge file contents verbatim or in bulk.
+- Web search only when explicitly requested; lease facts must come from source documents.
+- Self-check all financial calculations before delivery.
+- Avoid scope creep: do only what was asked; list extra improvements as optional.
