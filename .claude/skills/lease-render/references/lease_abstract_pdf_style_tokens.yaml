@@ -232,7 +232,9 @@ lease_abstract_pdf_style_tokens:
       use_thin_rules_only:
         thickness_pt_max: 1.0
 
-  content_order_blueprint:
+  # Advisory only — canonical section ordering is in the lease-abstract skill.
+  # This list provides finer-grained PDF subsection hints for pagination.
+  pdf_subsection_hints:
     recommended_section_sequence:
       - "Executive Summary"
       - "Key Dates & Notice Requirements"
