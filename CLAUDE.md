@@ -44,6 +44,9 @@ Read `config/shared_constants.md` for: schema version, confidence scale, validat
 | CSV, Excel, export, rollup, spreadsheet | lease-export |
 | validate, conformance, regression test, golden fixture | lease-eval |
 | calendar, ICS, critical dates, notice deadlines, tickler | lease-calendar |
+| diff, change_log report, amendment delta, overwrite preview | lease-diff |
+| risk register, flag review, exposure scan | lease-risk |
+| portfolio analytics, WALT, expiration ladder, tenant concentration | lease-portfolio |
 
 If the user does not specify output type, ask:
 > "Do you want (a) extraction JSON, (b) markdown abstract, (c) PDF, (d) CSV/Excel exports, or (e) critical-dates calendar?"
@@ -51,6 +54,12 @@ If the user does not specify output type, ask:
 `lease-eval` is a pipeline-internal skill: it runs *on* extraction JSON to gate downstream skills, not to produce a user-facing deliverable. Invoke it when the user asks to validate an extraction or when a candidate JSON needs a regression check before feeding it into another skill.
 
 `lease-calendar` consumes validated extraction JSON and produces an ICS feed plus a JSON manifest of critical dates (commencement, expiration, rent steps, renewal notice deadlines, guaranty burn-off). Run `lease-eval` first when possible — a PASS verdict guarantees every dated field has a citation the calendar can trace.
+
+`lease-diff` converts `change_log` into a stakeholder-ready diff deliverable: grouped markdown report plus JSON manifest with chronology, citation pairs, and optional reverse-diff overwrite preview from a draft amendment. It walks the existing log chronologically and treats the earliest `old_value` per path as the origin state.
+
+`lease-risk` formalizes `flag:`/`observation:` conventions into a structured risk register. It applies rule-based pattern checks and rule-based dollar exposure formulas only when required inputs exist; otherwise it emits severity without invented dollar values.
+
+`lease-portfolio` aggregates multiple previously validated single-tenant extraction outputs into portfolio metrics (WALT, expiration ladder, rent roll, concentration, TI/deposit exposure). This does not violate the single-tenant extraction rule because aggregation occurs after separate per-tenant extraction runs.
 
 ## Operating Rules
 - Be concise; prioritize accuracy, precision, and traceability.

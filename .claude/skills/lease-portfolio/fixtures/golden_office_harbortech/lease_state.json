@@ -1,0 +1,528 @@
+{
+  "lease_state": {
+    "Metadata": {
+      "SchemaVersion": "4.0.0",
+      "Extraction": {
+        "ExtractorVersion": "lease-extract/v4.0.0",
+        "GenerationTimestamp": "2026-04-09T00:00:00Z",
+        "SourceDocuments": [
+          "OL.pdf"
+        ]
+      },
+      "ClientMode": null,
+      "PortfolioName": null,
+      "Amendments": [],
+      "Compliance": null,
+      "Documents": null,
+      "Notes": null,
+      "LeaseCurrency": "USD",
+      "LeaseStatus": "Active"
+    },
+    "Parties": {
+      "Landlord": {
+        "Name": "Northpoint Offices Owner LLC",
+        "EntityType": null,
+        "Jurisdiction": null,
+        "TradeName": null,
+        "Address": null
+      },
+      "Tenant": {
+        "Name": "Harbortech Analytics Inc.",
+        "EntityType": null,
+        "Jurisdiction": null,
+        "TradeName": null,
+        "Address": null
+      },
+      "Guarantor": null
+    },
+    "Premises": {
+      "Address": "2200 Meridian Center, Suite 900, Aurora, CO 80014",
+      "BuildingName": "Meridian Center Tower",
+      "Suite": "900",
+      "RSF": 4800,
+      "BuildingRSF": null,
+      "SpaceUseType": "Office",
+      "Condition": null,
+      "Parking": null
+    },
+    "Dates": {
+      "LeaseExecutionDate": "2024-02-20",
+      "OriginalLeaseDate": "2024-02-20",
+      "CommencementDate": "2024-07-01",
+      "RentCommencementDate": "2024-08-01",
+      "ExpirationDate": "2033-12-31",
+      "TermMonths": 114,
+      "LeaseYearDefinition": null,
+      "DateNotes": null
+    },
+    "Financials": {
+      "BaseRent": {
+        "CommencementDate": "2024-08-01",
+        "EscalationMethod": null,
+        "Schedule": [
+          {
+            "period": "Year 1",
+            "startDate": "2024-08-01",
+            "endDate": "2025-07-31",
+            "monthlyAmount": 15600.0,
+            "annualAmount": 187200.0,
+            "baseRentPSF": 39.0
+          },
+          {
+            "period": "Year 2",
+            "startDate": "2025-08-01",
+            "endDate": "2026-07-31",
+            "monthlyAmount": 16068.0,
+            "annualAmount": 192816.0,
+            "baseRentPSF": 40.17
+          },
+          {
+            "period": "Year 3",
+            "startDate": "2026-08-01",
+            "endDate": "2027-07-31",
+            "monthlyAmount": 16550.04,
+            "annualAmount": 198600.48,
+            "baseRentPSF": 41.38
+          }
+        ],
+        "Abatement": null,
+        "PercentageRent": null
+      },
+      "AdditionalRent": {
+        "RecoveryType": "Modified Gross",
+        "BaseYears": null,
+        "ProRataShare": null,
+        "ExpenseStructure": {
+          "OperatingExpenses": "Base-year stop at 2024 operating expenses; tenant pays overage above stop.",
+          "Taxes": null,
+          "Insurance": null,
+          "Utilities": null,
+          "AdminManagementFee": null
+        },
+        "OtherCharges": null,
+        "ExpenseStopAmount": null,
+        "CAMCap": null,
+        "BillingCycle": null,
+        "ReconciliationTerms": null,
+        "AuditRights": null
+      },
+      "SecurityDeposit": {
+        "Amount": 60000,
+        "Form": "Cash",
+        "ReturnConditions": null,
+        "LetterOfCredit": null
+      },
+      "TIAllowance": {
+        "Amount": 96000,
+        "RatePerSF": null,
+        "Notes": null
+      },
+      "PrepaidRent": null,
+      "LateFees": {
+        "RatePercent": 4,
+        "FlatAmount": null,
+        "RateDescription": null,
+        "GracePeriodDays": null
+      },
+      "PaymentTerms": {
+        "Frequency": "Monthly",
+        "DueDate": null
+      },
+      "Holdover": {
+        "Multiplier": 2.0,
+        "DamagesLiability": null
+      }
+    },
+    "Options": {
+      "RenewalOptions": {
+        "NumberOfOptions": 1,
+        "TermMonthsPerOption": [],
+        "NoticePeriodDays": null,
+        "RentAdjustmentMethod": null,
+        "OtherTerms": null
+      },
+      "ExpansionRights": null,
+      "TerminationOptions": null,
+      "RightOfFirstOffer": null,
+      "RightOfFirstRefusal": null,
+      "ExclusiveUseRights": null,
+      "CoTenancy": null,
+      "GoDarkRights": null,
+      "ContractionOption": null,
+      "PurchaseOption": null
+    },
+    "Clauses": {
+      "Use": "General office, software development, client support, and related administrative uses.",
+      "AssignmentAndSubletting": null,
+      "Insurance": null,
+      "Maintenance": null,
+      "GoverningLaw": "State of Colorado",
+      "DefaultRemedies": null,
+      "Guaranty": null,
+      "HazardousMaterials": null,
+      "Condemnation": null,
+      "DamageDestruction": null,
+      "EnvironmentalCompliance": null,
+      "SNDA": null,
+      "Estoppel": null,
+      "Notices": null,
+      "Signage": null,
+      "ForceMajeure": null,
+      "DisputeResolution": null,
+      "OtherClauses": null
+    },
+    "Utilities": {
+      "Summary": null,
+      "ResponsibilityAllocation": null
+    }
+  },
+  "change_log": [],
+  "pending_fields": [],
+  "traceability": {
+    "extractedFieldsMetadata": {
+      "Metadata.SchemaVersion": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Metadata.Extraction.ExtractorVersion": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Metadata.Extraction.GenerationTimestamp": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Metadata.Extraction.SourceDocuments[0]": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Metadata.LeaseCurrency": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Metadata.LeaseStatus": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Parties.Landlord.Name": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Parties.Tenant.Name": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Premises.Address": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Premises.BuildingName": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Premises.Suite": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Premises.RSF": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Premises.SpaceUseType": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Dates.LeaseExecutionDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Dates.OriginalLeaseDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Dates.CommencementDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Dates.RentCommencementDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Dates.ExpirationDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Dates.TermMonths": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.CommencementDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[0].period": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[0].startDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[0].endDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[0].monthlyAmount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[0].annualAmount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[0].baseRentPSF": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[1].period": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[1].startDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[1].endDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[1].monthlyAmount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[1].annualAmount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[1].baseRentPSF": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[2].period": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[2].startDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[2].endDate": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[2].monthlyAmount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[2].annualAmount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule[2].baseRentPSF": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.AdditionalRent.RecoveryType": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.AdditionalRent.ExpenseStructure.OperatingExpenses": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.SecurityDeposit.Amount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.SecurityDeposit.Form": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.TIAllowance.Amount": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.LateFees.RatePercent": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.PaymentTerms.Frequency": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Financials.Holdover.Multiplier": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Options.RenewalOptions.NumberOfOptions": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Clauses.Use": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      },
+      "Clauses.GoverningLaw": {
+        "citation": "OL p1 \u00a71",
+        "confidence": 0.95,
+        "validation_status": "confirmed",
+        "document": "OL",
+        "notes": null
+      }
+    }
+  }
+}
