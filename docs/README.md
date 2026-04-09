@@ -27,8 +27,15 @@ v3-lease-abstract-pipeline/
 │       │   └── references/
 │       │       ├── style_guide_pdf.md       # PDF layout standards
 │       │       └── lease_abstract_pdf_style_tokens.yaml  # Design tokens
-│       └── lease-export/
-│           └── SKILL.md               # CSV/Excel export procedure
+│       ├── lease-export/
+│       │   └── SKILL.md               # CSV/Excel export procedure
+│       └── lease-eval/
+│           ├── SKILL.md               # Schema conformance + golden fixture diff
+│           ├── fixtures/
+│           │   ├── golden_ol_only/    # Anonymized OL-only lease_state (baseline)
+│           │   └── golden_ol_a1/      # Anonymized OL + A1 lease_state (exercises change_log)
+│           └── references/
+│               └── conformance_checklist.md  # All checks + failure/fix table
 └── docs/
     └── README.md                      # This file
 ```
@@ -45,7 +52,7 @@ The system uses Agent Skills with three layers to minimize context loading:
 
 `CLAUDE.md` and `config/shared_constants.md` are always available as universal context.
 
-## The Four Skills
+## The Five Skills
 
 | Skill | Trigger | Produces |
 |-------|---------|----------|
@@ -53,6 +60,9 @@ The system uses Agent Skills with three layers to minimize context loading:
 | **lease-abstract** | "abstract", "summary", "investment-grade" | Markdown lease abstract (audience-tailored) |
 | **lease-render** | "PDF", "render", "downloadable report" | Professional styled PDF |
 | **lease-export** | "CSV", "Excel", "export", "rollup" | CSV/XLSX workbooks with provenance |
+| **lease-eval** | "validate", "conformance", "regression test", "golden fixture" | Conformance report (PASS/WARN/FAIL) + optional golden fixture diff |
+
+`lease-eval` is a pipeline-internal gate. It runs on extraction JSON to catch schema, provenance, and change-log regressions before downstream skills consume the data. It does not produce a user-facing deliverable on its own.
 
 ## Key Concepts
 

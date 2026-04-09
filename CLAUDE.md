@@ -42,9 +42,12 @@ Read `config/shared_constants.md` for: schema version, confidence scale, validat
 | abstract, summary, investment-grade | lease-abstract |
 | PDF, render, downloadable report | lease-render |
 | CSV, Excel, export, rollup, spreadsheet | lease-export |
+| validate, conformance, regression test, golden fixture | lease-eval |
 
 If the user does not specify output type, ask:
 > "Do you want (a) extraction JSON, (b) markdown abstract, (c) PDF, or (d) CSV/Excel exports?"
+
+`lease-eval` is a pipeline-internal skill: it runs *on* extraction JSON to gate downstream skills, not to produce a user-facing deliverable. Invoke it when the user asks to validate an extraction or when a candidate JSON needs a regression check before feeding it into another skill.
 
 ## Operating Rules
 - Be concise; prioritize accuracy, precision, and traceability.
