@@ -36,10 +36,26 @@ v3-lease-abstract-pipeline/
 │       │   │   └── golden_ol_a1/      # Anonymized OL + A1 lease_state (exercises change_log)
 │       │   └── references/
 │       │       └── conformance_checklist.md  # All checks + failure/fix table
-│       └── lease-calendar/
-│           ├── SKILL.md               # Critical-dates ICS + JSON manifest procedure
+│       ├── lease-calendar/
+│       │   ├── SKILL.md               # Critical-dates ICS + JSON manifest procedure
+│       │   └── references/
+│       │       └── event_catalog.md   # Event types, derivation rules, skip reasons
+│       ├── lease-diff/
+│       │   ├── SKILL.md               # Amendment-aware change_log diff procedure
+│       │   └── references/
+│       │       └── diff_rules.md      # Normalization/grouping/column ordering rules
+│       ├── lease-risk/
+│       │   ├── SKILL.md               # Risk register detection procedure
+│       │   └── references/
+│       │       └── risk_patterns.md   # Risk rules, severity tiers, exposure formulas
+│       └── lease-portfolio/
+│           ├── SKILL.md               # Portfolio analytics rollup procedure
+│           ├── fixtures/
+│           │   └── golden_office_harbortech/
+│           │       ├── README.md
+│           │       └── lease_state.json
 │           └── references/
-│               └── event_catalog.md   # Event types, derivation rules, skip reasons
+│               └── rollup_metrics.md  # WALT, ladder, concentration, exposure formulas
 └── docs/
     └── README.md                      # This file
 ```
@@ -56,7 +72,7 @@ The system uses Agent Skills with three layers to minimize context loading:
 
 `CLAUDE.md` and `config/shared_constants.md` are always available as universal context.
 
-## The Six Skills
+## The Nine Skills
 
 | Skill | Trigger | Produces |
 |-------|---------|----------|
@@ -66,10 +82,19 @@ The system uses Agent Skills with three layers to minimize context loading:
 | **lease-export** | "CSV", "Excel", "export", "rollup" | CSV/XLSX workbooks with provenance |
 | **lease-eval** | "validate", "conformance", "regression test", "golden fixture" | Conformance report (PASS/WARN/FAIL) + optional golden fixture diff |
 | **lease-calendar** | "calendar", "ICS", "critical dates", "notice deadlines", "tickler" | RFC 5545 ICS feed + JSON manifest of dated obligations |
+| **lease-diff** | "diff", "change log", "amendment delta", "overwrite preview" | Markdown diff report + JSON manifest with per-path chronology and citation pairs |
+| **lease-risk** | "risk register", "flag review", "exposure scan" | Structured risk register (markdown + JSON manifest), including zero-risk outputs |
+| **lease-portfolio** | "portfolio rollup", "WALT", "expiration ladder", "tenant concentration" | Portfolio markdown summary + JSON metrics manifest over multiple leases |
 
 `lease-eval` is a pipeline-internal gate. It runs on extraction JSON to catch schema, provenance, and change-log regressions before downstream skills consume the data. It does not produce a user-facing deliverable on its own.
 
 `lease-calendar` reads dated fields from a validated `lease_state` and emits a schedulable calendar: commencement, expiration, rent steps, renewal notice deadlines, guaranty burn-off. Derived dates (notice deadlines) record their formulas in the manifest for auditability. Skips trigger-based windows (ROFO/ROFR) rather than synthesizing fake dates.
+
+`lease-diff` elevates `change_log` into a first-class deliverable: grouped amendment chronology, OL -> A1 -> A2 path progression, citation pairs, and optional reverse diff preview from draft amendments.
+
+`lease-risk` formalizes operational `flag:`/`observation:` findings into rule-based risk rows with explicit severity and formula-governed exposure handling. If formula inputs are missing, severity is still emitted but dollar values are intentionally omitted.
+
+`lease-portfolio` computes portfolio analytics from prior single-tenant extraction outputs (WALT, expiration ladder, rent roll, concentration, TI/deposit exposure). This aggregation stage is intentionally downstream and does not violate the extraction-time single-tenant rule.
 
 ## Key Concepts
 
