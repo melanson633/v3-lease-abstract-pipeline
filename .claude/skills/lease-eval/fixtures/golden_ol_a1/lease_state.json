@@ -1,0 +1,779 @@
+{
+  "lease_state": {
+    "Metadata": {
+      "SchemaVersion": "4.0.0",
+      "Extraction": {
+        "ExtractorVersion": "lease-extract/v4.0.0",
+        "GenerationTimestamp": "2026-04-09T00:00:00Z",
+        "SourceDocuments": [
+          "OL.pdf",
+          "A1.pdf"
+        ]
+      },
+      "ClientMode": null,
+      "PortfolioName": null,
+      "Amendments": [
+        "A1"
+      ],
+      "Compliance": null,
+      "Documents": null,
+      "Notes": "Anonymized fixture for lease-eval regression testing; exercises change_log via A1.",
+      "LeaseCurrency": "USD",
+      "LeaseStatus": "Active"
+    },
+    "Parties": {
+      "Landlord": {
+        "Name": "Harborview Plaza Owner LP",
+        "EntityType": "Limited Partnership",
+        "Jurisdiction": "Delaware",
+        "TradeName": null,
+        "Address": null
+      },
+      "Tenant": {
+        "Name": "Coastline Stationery LLC",
+        "EntityType": "Limited Liability Company",
+        "Jurisdiction": "Delaware",
+        "TradeName": null,
+        "Address": null
+      },
+      "Guarantor": null
+    },
+    "Premises": {
+      "Address": "100 Harborview Plaza, Suite 104, Marina Bay, CA 90001",
+      "BuildingName": "Harborview Plaza",
+      "Suite": "104",
+      "RSF": 2500,
+      "BuildingRSF": 85000,
+      "SpaceUseType": "Retail",
+      "Condition": null,
+      "Parking": null
+    },
+    "Dates": {
+      "LeaseExecutionDate": "2025-04-15",
+      "OriginalLeaseDate": "2025-04-15",
+      "CommencementDate": "2025-06-01",
+      "RentCommencementDate": "2025-06-01",
+      "ExpirationDate": "2032-05-31",
+      "TermMonths": 84,
+      "LeaseYearDefinition": "12-month period following the Commencement Date, with each subsequent lease year beginning on the anniversary.",
+      "DateNotes": null
+    },
+    "Financials": {
+      "BaseRent": {
+        "CommencementDate": "2025-06-01",
+        "EscalationMethod": "Fixed $1.00/RSF annual step",
+        "Schedule": [
+          {
+            "period": "Year 1",
+            "startDate": "2025-06-01",
+            "endDate": "2026-05-31",
+            "monthlyAmount": 6666.67,
+            "annualAmount": 80000,
+            "baseRentPSF": 32.0
+          },
+          {
+            "period": "Year 2",
+            "startDate": "2026-06-01",
+            "endDate": "2027-05-31",
+            "monthlyAmount": 6875.0,
+            "annualAmount": 82500,
+            "baseRentPSF": 33.0
+          },
+          {
+            "period": "Year 3",
+            "startDate": "2027-06-01",
+            "endDate": "2028-05-31",
+            "monthlyAmount": 7083.33,
+            "annualAmount": 85000,
+            "baseRentPSF": 34.0
+          },
+          {
+            "period": "Year 4",
+            "startDate": "2028-06-01",
+            "endDate": "2029-05-31",
+            "monthlyAmount": 7291.67,
+            "annualAmount": 87500,
+            "baseRentPSF": 35.0
+          },
+          {
+            "period": "Year 5",
+            "startDate": "2029-06-01",
+            "endDate": "2030-05-31",
+            "monthlyAmount": 7500.0,
+            "annualAmount": 90000,
+            "baseRentPSF": 36.0
+          },
+          {
+            "period": "Year 6",
+            "startDate": "2030-06-01",
+            "endDate": "2031-05-31",
+            "monthlyAmount": 7708.33,
+            "annualAmount": 92500,
+            "baseRentPSF": 37.0
+          },
+          {
+            "period": "Year 7",
+            "startDate": "2031-06-01",
+            "endDate": "2032-05-31",
+            "monthlyAmount": 7916.67,
+            "annualAmount": 95000,
+            "baseRentPSF": 38.0
+          }
+        ],
+        "Abatement": null,
+        "PercentageRent": null
+      },
+      "AdditionalRent": {
+        "RecoveryType": "Triple Net (NNN)",
+        "BaseYears": null,
+        "ProRataShare": 0.0294,
+        "ExpenseStructure": {
+          "OperatingExpenses": "Tenant pays pro-rata share of all operating expenses per §5.2.",
+          "Taxes": "Tenant pays pro-rata share of real estate taxes per §5.3.",
+          "Insurance": "Tenant pays pro-rata share of landlord's property insurance per §5.4.",
+          "Utilities": "Tenant directly metered and pays utilities for the premises.",
+          "AdminManagementFee": null
+        },
+        "OtherCharges": null,
+        "ExpenseStopAmount": null,
+        "CAMCap": null,
+        "BillingCycle": "Monthly estimated payments with annual reconciliation.",
+        "ReconciliationTerms": "Landlord delivers annual reconciliation within 120 days of calendar year-end.",
+        "AuditRights": "Tenant has audit right within 90 days of receiving reconciliation."
+      },
+      "SecurityDeposit": {
+        "Amount": 15000,
+        "Form": "Cash",
+        "ReturnConditions": "Returned within 30 days after lease expiration, subject to offset for unpaid rent or damages.",
+        "LetterOfCredit": null
+      },
+      "TIAllowance": {
+        "Amount": 50000,
+        "RatePerSF": 20,
+        "Notes": "$50,000 TI allowance added by A1 for store refresh; must be drawn by 2028-06-01."
+      },
+      "PrepaidRent": null,
+      "LateFees": {
+        "RatePercent": 5,
+        "FlatAmount": null,
+        "RateDescription": null,
+        "GracePeriodDays": 5
+      },
+      "PaymentTerms": {
+        "Frequency": "Monthly",
+        "DueDate": "1st of month"
+      },
+      "Holdover": {
+        "Multiplier": 1.5,
+        "DamagesLiability": "Tenant liable for all consequential damages arising from holdover beyond 30 days."
+      }
+    },
+    "Options": {
+      "RenewalOptions": {
+        "NumberOfOptions": 1,
+        "TermMonthsPerOption": [
+          60
+        ],
+        "NoticePeriodDays": 270,
+        "RentAdjustmentMethod": "Fair Market Value",
+        "OtherTerms": "Tenant must not be in default at time of exercise or commencement of renewal term."
+      },
+      "ExpansionRights": null,
+      "TerminationOptions": null,
+      "RightOfFirstOffer": null,
+      "RightOfFirstRefusal": null,
+      "ExclusiveUseRights": null,
+      "CoTenancy": null,
+      "GoDarkRights": null,
+      "ContractionOption": null,
+      "PurchaseOption": null
+    },
+    "Clauses": {
+      "Use": "Retail sale of stationery, greeting cards, and gift items, and for no other purpose.",
+      "AssignmentAndSubletting": {
+        "Allowed": true,
+        "Restrictions": "Landlord consent required, not to be unreasonably withheld.",
+        "ProfitSharing": null,
+        "PermittedTransfers": "Transfers to affiliates under common control permitted without consent.",
+        "RecaptureRight": false,
+        "OriginalTenantLiability": "Original tenant remains liable following any assignment.",
+        "ConditionsForConsent": null
+      },
+      "Insurance": {
+        "Summary": "Tenant and landlord each carry customary commercial insurance.",
+        "TenantRequirements": "Commercial general liability $2M per occurrence / $4M aggregate; property insurance on tenant improvements and personal property; workers compensation per statute; waiver of subrogation; landlord named as additional insured.",
+        "LandlordRequirements": "Property insurance on building shell and common areas; commercial general liability."
+      },
+      "Maintenance": {
+        "TenantResponsibilities": "Interior non-structural maintenance and repair, including HVAC serving the premises exclusively.",
+        "LandlordResponsibilities": "Roof, structural, exterior walls, foundation, common areas.",
+        "SharedResponsibilities": null
+      },
+      "GoverningLaw": "State of California",
+      "DefaultRemedies": {
+        "EventsOfDefault": "Non-payment of rent, breach of covenant, bankruptcy, abandonment.",
+        "CurePeriodDays": 10,
+        "Remedies": "Termination, re-entry, acceleration of rent, all remedies at law or equity."
+      },
+      "Guaranty": null,
+      "HazardousMaterials": "Tenant shall not store hazardous materials except customary office and cleaning supplies.",
+      "Condemnation": null,
+      "DamageDestruction": "Landlord to restore premises within 180 days; rent abates during period of untenantability.",
+      "EnvironmentalCompliance": null,
+      "SNDA": "Tenant agrees to subordinate lease to future mortgages subject to customary non-disturbance.",
+      "Estoppel": "Tenant to deliver estoppel certificate within 10 business days of request.",
+      "Notices": null,
+      "Signage": "Tenant may install building-standard signage on storefront subject to landlord approval.",
+      "ForceMajeure": null,
+      "DisputeResolution": null,
+      "OtherClauses": null
+    },
+    "Utilities": {
+      "Summary": "Premises separately metered for electricity and water; tenant pays directly.",
+      "ResponsibilityAllocation": "Tenant: electricity, water, gas, telecom, trash. Landlord: common area utilities and exterior lighting."
+    }
+  },
+  "change_log": [
+    {
+      "field_path": "Dates.ExpirationDate",
+      "old_value": "2030-05-31",
+      "new_value": "2032-05-31",
+      "effective_date": "2027-01-15",
+      "source_document": "A1",
+      "citation": "A1 p1 §1",
+      "impact_notes": "Term extended 24 months; new expiration 2032-05-31."
+    },
+    {
+      "field_path": "Dates.TermMonths",
+      "old_value": 60,
+      "new_value": 84,
+      "effective_date": "2027-01-15",
+      "source_document": "A1",
+      "citation": "A1 p1 §1",
+      "impact_notes": "Term length updated to reflect 24-month extension."
+    },
+    {
+      "field_path": "Financials.BaseRent.Schedule[5]",
+      "old_value": null,
+      "new_value": {
+        "period": "Year 6",
+        "startDate": "2030-06-01",
+        "endDate": "2031-05-31",
+        "monthlyAmount": 7708.33,
+        "annualAmount": 92500,
+        "baseRentPSF": 37.0
+      },
+      "effective_date": "2027-01-15",
+      "source_document": "A1",
+      "citation": "A1 p1 §2",
+      "impact_notes": "Year 6 rent period added for extension; continues $1.00/RSF annual step."
+    },
+    {
+      "field_path": "Financials.BaseRent.Schedule[6]",
+      "old_value": null,
+      "new_value": {
+        "period": "Year 7",
+        "startDate": "2031-06-01",
+        "endDate": "2032-05-31",
+        "monthlyAmount": 7916.67,
+        "annualAmount": 95000,
+        "baseRentPSF": 38.0
+      },
+      "effective_date": "2027-01-15",
+      "source_document": "A1",
+      "citation": "A1 p1 §2",
+      "impact_notes": "Year 7 rent period added for extension; continues $1.00/RSF annual step."
+    },
+    {
+      "field_path": "Financials.TIAllowance.Amount",
+      "old_value": null,
+      "new_value": 50000,
+      "effective_date": "2027-01-15",
+      "source_document": "A1",
+      "citation": "A1 p2 §3",
+      "impact_notes": "New TI allowance of $50,000 granted by landlord."
+    },
+    {
+      "field_path": "Financials.TIAllowance.RatePerSF",
+      "old_value": null,
+      "new_value": 20,
+      "effective_date": "2027-01-15",
+      "source_document": "A1",
+      "citation": "A1 p2 §3",
+      "impact_notes": "TI allowance expressed as $20.00/RSF across the 2,500 RSF premises."
+    }
+  ],
+  "pending_fields": [],
+  "traceability": {
+    "extractedFieldsMetadata": {
+      "Metadata.SchemaVersion": {
+        "citation": null,
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Schema version constant."
+      },
+      "Metadata.Notes": {
+        "citation": null,
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Free-text note on extraction."
+      },
+      "Metadata.Extraction.ExtractorVersion": {
+        "citation": null,
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Extractor version constant."
+      },
+      "Metadata.Extraction.GenerationTimestamp": {
+        "citation": null,
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Generation timestamp."
+      },
+      "Metadata.Extraction.SourceDocuments": {
+        "citation": null,
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "OL plus A1."
+      },
+      "Metadata.LeaseCurrency": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Currency inferred from jurisdiction and rent denomination."
+      },
+      "Metadata.LeaseStatus": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Lease is active as of extraction date."
+      },
+      "Parties.Landlord.Name": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Parties.Landlord.EntityType": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Parties.Landlord.Jurisdiction": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Parties.Tenant.Name": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Parties.Tenant.EntityType": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Parties.Tenant.Jurisdiction": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Premises.Address": {
+        "citation": "OL p2 §1.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Premises.BuildingName": {
+        "citation": "OL p2 §1.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Premises.Suite": {
+        "citation": "OL p2 §1.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Premises.RSF": {
+        "citation": "OL p2 §1.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Premises.BuildingRSF": {
+        "citation": "OL p2 §1.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Premises.SpaceUseType": {
+        "citation": "OL p2 §1.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Dates.LeaseExecutionDate": {
+        "citation": "OL p9",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "From signature block."
+      },
+      "Dates.OriginalLeaseDate": {
+        "citation": "OL p1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Dates.CommencementDate": {
+        "citation": "OL p3 §2.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Dates.RentCommencementDate": {
+        "citation": "OL p3 §2.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Same as CommencementDate; no free rent period."
+      },
+      "Dates.ExpirationDate": {
+        "citation": "A1 p1 §1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Superseded by A1; original OL value 2030-05-31 preserved in change_log."
+      },
+      "Dates.TermMonths": {
+        "citation": "A1 p1 §1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Superseded by A1; original OL value 60 preserved in change_log."
+      },
+      "Dates.LeaseYearDefinition": {
+        "citation": "OL p3 §2.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.BaseRent.CommencementDate": {
+        "citation": "OL p4 §3.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.BaseRent.EscalationMethod": {
+        "citation": "OL p4 §3.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.BaseRent.Schedule": {
+        "citation": "OL p4 §3.2; A1 p1 §2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Years 1-5 from OL; Years 6-7 added by A1."
+      },
+      "Financials.AdditionalRent.RecoveryType": {
+        "citation": "OL p5 §5.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.AdditionalRent.ProRataShare": {
+        "citation": "OL p5 §5.1",
+        "confidence": 0.9,
+        "validation_status": "confirmed",
+        "notes": "Calculated from 2500/85000; consistent with lease language."
+      },
+      "Financials.AdditionalRent.ExpenseStructure.OperatingExpenses": {
+        "citation": "OL p5 §5.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.AdditionalRent.ExpenseStructure.Taxes": {
+        "citation": "OL p5 §5.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.AdditionalRent.ExpenseStructure.Insurance": {
+        "citation": "OL p5 §5.4",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.AdditionalRent.ExpenseStructure.Utilities": {
+        "citation": "OL p5 §5.5",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.AdditionalRent.BillingCycle": {
+        "citation": "OL p5 §5.6",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.AdditionalRent.ReconciliationTerms": {
+        "citation": "OL p5 §5.6",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.AdditionalRent.AuditRights": {
+        "citation": "OL p5 §5.7",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.SecurityDeposit.Amount": {
+        "citation": "OL p6 §6.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.SecurityDeposit.Form": {
+        "citation": "OL p6 §6.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.SecurityDeposit.ReturnConditions": {
+        "citation": "OL p6 §6.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.LateFees.RatePercent": {
+        "citation": "OL p6 §6.4",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.LateFees.GracePeriodDays": {
+        "citation": "OL p6 §6.4",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.PaymentTerms.Frequency": {
+        "citation": "OL p6 §6.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.PaymentTerms.DueDate": {
+        "citation": "OL p6 §6.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.Holdover.Multiplier": {
+        "citation": "OL p7 §7.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Financials.Holdover.DamagesLiability": {
+        "citation": "OL p7 §7.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Options.RenewalOptions.NumberOfOptions": {
+        "citation": "OL p7 §8.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Options.RenewalOptions.TermMonthsPerOption": {
+        "citation": "OL p7 §8.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Options.RenewalOptions.NoticePeriodDays": {
+        "citation": "OL p7 §8.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Options.RenewalOptions.RentAdjustmentMethod": {
+        "citation": "OL p7 §8.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Options.RenewalOptions.OtherTerms": {
+        "citation": "OL p7 §8.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Use": {
+        "citation": "OL p2 §1.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.AssignmentAndSubletting.Allowed": {
+        "citation": "OL p8 §9.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.AssignmentAndSubletting.Restrictions": {
+        "citation": "OL p8 §9.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.AssignmentAndSubletting.PermittedTransfers": {
+        "citation": "OL p8 §9.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.AssignmentAndSubletting.RecaptureRight": {
+        "citation": "OL p8 §9.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.AssignmentAndSubletting.OriginalTenantLiability": {
+        "citation": "OL p8 §9.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Insurance.Summary": {
+        "citation": "OL p8 §10.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Insurance.TenantRequirements": {
+        "citation": "OL p8 §10.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Insurance.LandlordRequirements": {
+        "citation": "OL p8 §10.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Maintenance.TenantResponsibilities": {
+        "citation": "OL p8 §11.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Maintenance.LandlordResponsibilities": {
+        "citation": "OL p8 §11.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.GoverningLaw": {
+        "citation": "OL p9 §15.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.DefaultRemedies.EventsOfDefault": {
+        "citation": "OL p9 §12.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.DefaultRemedies.CurePeriodDays": {
+        "citation": "OL p9 §12.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.DefaultRemedies.Remedies": {
+        "citation": "OL p9 §12.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.HazardousMaterials": {
+        "citation": "OL p9 §13.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.DamageDestruction": {
+        "citation": "OL p9 §14.1",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.SNDA": {
+        "citation": "OL p9 §15.2",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Estoppel": {
+        "citation": "OL p9 §15.3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Clauses.Signage": {
+        "citation": "OL p9 §15.4",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Utilities.Summary": {
+        "citation": "OL p5 §5.5",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Utilities.ResponsibilityAllocation": {
+        "citation": "OL p5 §5.5",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": null
+      },
+      "Metadata.Amendments": {
+        "citation": null,
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Amendment identifiers processed."
+      },
+      "Financials.TIAllowance.Amount": {
+        "citation": "A1 p2 §3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Added by A1."
+      },
+      "Financials.TIAllowance.RatePerSF": {
+        "citation": "A1 p2 §3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Added by A1."
+      },
+      "Financials.TIAllowance.Notes": {
+        "citation": "A1 p2 §3",
+        "confidence": 1.0,
+        "validation_status": "confirmed",
+        "notes": "Added by A1."
+      }
+    }
+  }
+}
