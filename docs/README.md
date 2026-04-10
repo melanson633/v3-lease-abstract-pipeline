@@ -1,6 +1,6 @@
 # LeaseGPT — Repository Guide
 
-This repository contains the knowledge files for **shortcut.ai_cre** (LeaseGPT), a modular commercial lease extraction and abstraction system organized as Agent Skills.
+This repository contains the knowledge files for **shortcut.ai_cre** (LeaseGPT), plus a runnable Python CLI runtime that operationalizes those skill contracts.
 
 ---
 
@@ -56,6 +56,11 @@ v3-lease-abstract-pipeline/
 │           │       └── lease_state.json
 │           └── references/
 │               └── rollup_metrics.md  # WALT, ladder, concentration, exposure formulas
+├── leasegpt/                          # Runtime package (CLI + core pipeline + providers)
+├── tests/                             # Fixture-driven runtime tests
+├── pyproject.toml                     # Python project config
+├── .env.example                       # Provider configuration template
+├── README.md                          # Runtime quick start
 └── docs/
     └── README.md                      # This file
 ```
@@ -107,3 +112,12 @@ The system uses Agent Skills with three layers to minimize context loading:
 ## Schema
 
 The canonical data contract is `v4_unified_schema.json` (v4.0.0, JSON Schema draft-07), located in `.claude/skills/lease-extract/references/`. All extraction and export outputs conform to this schema.
+
+## Runtime Commands
+
+The Python runtime exposes:
+- `leasegpt run` for full document-to-deliverables flow using a configured LLM provider.
+- `leasegpt run-from-json` for offline downstream verification from existing extraction JSON.
+- Per-skill commands: `extract`, `eval`, `abstract`, `render`, `export`, `calendar`, `diff`, `risk`, `portfolio`.
+
+See root `README.md` for setup and command examples.

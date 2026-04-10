@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leasegpt"
+version = "0.1.0"
+description = "CLI-first LeaseGPT runtime for extraction, validation, and downstream lease deliverables."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "anthropic>=0.67.0",
+  "google-genai>=1.30.0",
+  "jsonschema>=4.23.0",
+  "openai>=1.109.0",
+  "openpyxl>=3.1.5",
+  "pypdf>=5.9.0",
+  "python-docx>=1.2.0",
+  "python-dotenv>=1.1.1",
+  "pyyaml>=6.0.2",
+  "reportlab>=4.4.3",
+  "typer>=0.16.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4.1",
+]
+
+[project.scripts]
+leasegpt = "leasegpt.cli:main"
+
+[tool.setuptools]
+packages = ["leasegpt", "leasegpt.providers", "leasegpt.pipeline", "leasegpt.utils"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
