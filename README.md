@@ -96,3 +96,13 @@ leasegpt run-from-json out/openai_extraction.json --output-dir out/openai_full
 ## Existing Knowledge Docs
 - High-level repository guide: [docs/README.md](docs/README.md)
 - Runtime constraints and routing: [CLAUDE.md](CLAUDE.md)
+
+## Harness Readiness Commands
+- Deterministic smoke command (local and CI):
+  - `./scripts/harness_smoke.sh`
+- CI quality gate jobs (branch-protection-ready status checks):
+  - `quality-gates (format/lint/type/tests/eval)`
+  - `harness-smoke (deterministic offline)`
+
+- Coverage gate command:
+  - `pytest -q --cov=leasegpt.pipeline --cov=leasegpt.cli --cov-report=term-missing --cov-report=xml --cov-fail-under=60`

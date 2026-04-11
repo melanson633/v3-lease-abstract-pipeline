@@ -9,47 +9,56 @@ How to use:
 
 ## P0 — Required before “harness-ready” claim
 
-- [ ] **P0.1 Add root `AGENTS.md` contract**
+- [x] **P0.1 Add root `AGENTS.md` contract**
+  - Evidence: Added root `AGENTS.md` with workflow/check/escalation/commit/PR/policy hierarchy sections; indexed in `docs/system-of-record/index.md`.
   - Do: define agent workflow, required checks, escalation boundaries, commit/PR conventions, and policy scope.
   - Max effort: 60 minutes or 2 iterations.
   - Done when: `AGENTS.md` exists at repo root, covers all required sections, and is referenced by system-of-record index.
 
-- [ ] **P0.2 Add root `ARCHITECTURE.md`**
+- [x] **P0.2 Add root `ARCHITECTURE.md`**
+  - Evidence: Added `ARCHITECTURE.md` documenting boundaries, dependency layering, stage entrypoints, and per-stage invariants.
   - Do: document pipeline boundaries, module ownership, dependency layering, and stage invariants.
   - Max effort: 90 minutes.
   - Done when: `ARCHITECTURE.md` exists, maps all pipeline stages/entrypoints, and includes invariant bullets per stage.
 
-- [ ] **P0.3 Create `docs/system-of-record/index.md`**
+- [x] **P0.3 Create `docs/system-of-record/index.md`**
+  - Evidence: Added canonical source-of-truth index linking agent policy, architecture, exec plans, baseline docs, constants, skills, and env conventions.
   - Do: list canonical docs (schema/constants/skills/architecture/runbooks) and where to edit each.
   - Max effort: 45 minutes.
   - Done when: index exists and links to all canonical sources with explicit “source of truth” labels.
 
-- [ ] **P0.4 Establish `docs/exec-plans/` operating structure**
+- [x] **P0.4 Establish `docs/exec-plans/` operating structure**
+  - Evidence: Added `docs/exec-plans/completed/`, `docs/exec-plans/tech-debt-tracker.md`, and discoverable plan policy in `docs/exec-plans/README.md`.
   - Do: ensure `active/`, `completed/`, and `tech-debt-tracker.md`; add lightweight rule making plans mandatory for non-trivial work.
   - Max effort: 45 minutes.
   - Done when: directories/files exist and plan policy is documented in a discoverable location.
 
-- [ ] **P0.5 Define CI quality gates**
+- [x] **P0.5 Define CI quality gates**
+  - Evidence: Added `.github/workflows/ci-quality-gates.yml` with PR-triggered format/lint/type/tests/eval gates and explicit status-check names for branch protection.
   - Do: add CI workflow(s) gating format/lint/type/tests/eval fixtures; fail PRs on gate failure.
   - Max effort: 3 hours.
   - Done when: CI config enforces required checks on PR and branch protection-ready status checks are clearly named.
 
-- [ ] **P0.6 Add deterministic harness smoke command**
+- [x] **P0.6 Add deterministic harness smoke command**
+  - Evidence: Added `scripts/harness_smoke.sh` running eval + offline e2e + artifact sanity checks; validated local stable pass/fail behavior and CI job wiring.
   - Do: create one command/script/target running eval + offline e2e + artifact sanity checks.
   - Max effort: 2 hours.
   - Done when: command is documented, runnable locally and in CI, with stable exit codes.
 
-- [ ] **P0.7 Add coverage reporting + thresholds**
+- [x] **P0.7 Add coverage reporting + thresholds**
+  - Evidence: Added pytest-cov tooling/config, CI coverage gate (`--cov-fail-under=60`), and documented threshold rationale in `docs/harness-quality-gates.md`.
   - Do: configure coverage output and minimum thresholds for CLI/pipeline surfaces.
   - Max effort: 2 hours.
   - Done when: CI fails below threshold; thresholds and rationale are documented.
 
-- [ ] **P0.8 Add policy checks for required docs**
+- [x] **P0.8 Add policy checks for required docs**
+  - Evidence: Added `scripts/check_required_docs.py` and CI step enforcing required docs/section markers for `AGENTS.md`, `ARCHITECTURE.md`, system-of-record index, and triage runbook.
   - Do: machine-check presence/required sections of `AGENTS.md`, `ARCHITECTURE.md`, runbooks, and system-of-record.
   - Max effort: 2 hours.
   - Done when: automated check fails if required docs/sections are missing.
 
-- [ ] **P0.9 Add structured PR template**
+- [x] **P0.9 Add structured PR template**
+  - Evidence: Added `.github/pull_request_template.md` requiring intent, acceptance criteria, evidence artifacts, and rollback plan sections.
   - Do: require intent, acceptance criteria, evidence artifacts, rollback plan.
   - Max effort: 45 minutes.
   - Done when: template is default for PR creation and sections are explicit/required by convention.
@@ -181,3 +190,11 @@ How to use:
   - Reorder only if dependencies force it; otherwise preserve priority order.
 - Anti-churn rule: do **not** reopen completed tasks unless new evidence shows acceptance criteria are unmet.
 - Blocking rule: after max effort hit, record blocker and move to next highest-priority unblocked task.
+
+
+## Session Update — 2026-04-11
+- Completed this session: P0.7, P0.8, P0.9.
+- Remaining highest-priority unchecked task: P0.10 (failure triage runbook completion/decision branches).
+- Blockers: none; created initial runbook scaffold to satisfy doc-policy checks, but P0.10 still requires full deterministic retry/escalation branching.
+- Immediate next action: expand `docs/runbooks/failure-triage.md` to include explicit auto-retry limits, incident triggers, and human escalation rules with CI/harness mapping.
+- Do not repeat next session: recreating coverage/doc-policy/PR-template plumbing unless acceptance evidence is shown invalid.
