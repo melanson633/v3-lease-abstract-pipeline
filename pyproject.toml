@@ -25,6 +25,9 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "pytest>=8.4.1",
+  "ruff==0.13.0",
+  "mypy==1.18.2",
+  "pytest-cov==7.0.0",
 ]
 
 [project.scripts]
@@ -36,3 +39,26 @@ packages = ["leasegpt", "leasegpt.providers", "leasegpt.pipeline", "leasegpt.uti
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
+
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_unused_configs = true
+check_untyped_defs = true
+disallow_incomplete_defs = false
+no_implicit_optional = true
+strict_equality = true
+
+
+[tool.coverage.run]
+source = ["leasegpt/pipeline", "leasegpt/cli.py"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 60

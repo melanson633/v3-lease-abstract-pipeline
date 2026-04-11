@@ -1,0 +1,63 @@
+name: CI Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality-gates:
+    name: quality-gates (format/lint/type/tests/eval)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install package + dev deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+
+      - name: Format check (ruff format)
+        run: ruff format --check .
+
+      - name: Lint check (ruff)
+        run: ruff check .
+
+      - name: Type check (mypy)
+        run: mypy leasegpt
+
+      - name: Unit tests + coverage gate
+        run: pytest -q --cov=leasegpt.pipeline --cov=leasegpt.cli --cov-report=term-missing --cov-report=xml --cov-fail-under=60
+
+      - name: Eval fixtures check
+        run: pytest -q tests/test_eval.py
+
+      - name: Required docs policy check
+        run: python scripts/check_required_docs.py
+
+  harness-smoke:
+    name: harness-smoke (deterministic offline)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install package + dev deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+
+      - name: Run harness smoke
+        run: ./scripts/harness_smoke.sh
