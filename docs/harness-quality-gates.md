@@ -17,3 +17,17 @@ Rationale:
 ```bash
 pytest -q --cov=leasegpt.pipeline --cov=leasegpt.cli --cov-report=term-missing --cov-report=xml --cov-fail-under=60
 ```
+
+
+## Static Analysis Stack
+Pinned tooling is declared in `pyproject.toml` dev dependencies:
+- `ruff==0.13.0`
+- `mypy==1.18.2`
+
+Local command:
+```bash
+./scripts/static_analysis.sh
+```
+
+CI enforcement:
+- `.github/workflows/ci-quality-gates.yml` runs `./scripts/static_analysis.sh` in `quality-gates`.

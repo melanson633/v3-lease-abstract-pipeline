@@ -63,29 +63,34 @@ How to use:
   - Max effort: 45 minutes.
   - Done when: template is default for PR creation and sections are explicit/required by convention.
 
-- [ ] **P0.10 Add failure triage runbook**
+- [x] **P0.10 Add failure triage runbook**
+  - Evidence: Expanded `docs/runbooks/failure-triage.md` with deterministic branch logic, retry caps, incident triggers, escalation SLAs, and explicit local-command mappings to CI quality-gate/harness-smoke failures.
   - Do: define auto-retry limits, incident-issue triggers, and human escalation rules.
   - Max effort: 90 minutes.
   - Done when: runbook exists, references CI/harness checks, and gives deterministic decision branches.
 
-- [ ] **P0.11 Implement artifactized CI validation outputs**
+- [x] **P0.11 Implement artifactized CI validation outputs**
+  - Evidence: Updated `.github/workflows/ci-quality-gates.yml` to generate conformance/diff outputs and upload `quality-gates-validation-artifacts` plus `harness-smoke-validation-artifacts` with deterministic paths and `retention-days: 14`.
   - Do: publish conformance report, summary, and diffs as CI artifacts for every PR.
   - Max effort: 2 hours.
   - Done when: PR runs attach artifacts with predictable names/paths and retention settings.
 
-- [ ] **P0.12 Add dependency + secrets policy**
+- [x] **P0.12 Add dependency + secrets policy**
+  - Evidence: Added `docs/security/dependency-secrets-policy.md`, linked it from `docs/system-of-record/index.md`, and extended `scripts/check_required_docs.py`/CI docs-policy enforcement to require key policy sections.
   - Do: document provider key handling, env constraints, allowed secret paths, and redaction rules.
   - Max effort: 90 minutes.
   - Done when: policy doc exists, is linked from system-of-record, and aligns with CI/security checks.
 
 ## P1 — High-leverage next
 
-- [ ] **P1.13 Add static analysis stack**
+- [x] **P1.13 Add static analysis stack**
+  - Evidence: Added `scripts/static_analysis.sh`, switched CI to run it, documented invocation in `docs/harness-quality-gates.md`, and kept pinned Ruff/mypy versions in `pyproject.toml`.
   - Do: configure pinned lint/format/type tooling (e.g., Ruff + mypy/pyright) and CI enforcement.
   - Max effort: 2 hours.
   - Done when: local command + CI both enforce pinned config with documented invocation.
 
-- [ ] **P1.14 Add mutation/property-based tests**
+- [x] **P1.14 Add mutation/property-based tests**
+  - Evidence: Added `tests/test_eval_mutation.py` mutation suite that seeds change-log mismatch, incomplete citation pair, and pending-populated regressions and asserts expected WARN/FAIL detection via `evaluate_bundle`; suite runs through default `pytest` CI path.
   - Do: add schema-evolution and changelog-coherence edge-case tests.
   - Max effort: 4 hours.
   - Done when: at least one robust property/mutation suite runs in CI and catches seeded regressions.
@@ -193,8 +198,9 @@ How to use:
 
 
 ## Session Update — 2026-04-11
-- Completed this session: P0.7, P0.8, P0.9.
-- Remaining highest-priority unchecked task: P0.10 (failure triage runbook completion/decision branches).
-- Blockers: none; created initial runbook scaffold to satisfy doc-policy checks, but P0.10 still requires full deterministic retry/escalation branching.
-- Immediate next action: expand `docs/runbooks/failure-triage.md` to include explicit auto-retry limits, incident triggers, and human escalation rules with CI/harness mapping.
-- Do not repeat next session: recreating coverage/doc-policy/PR-template plumbing unless acceptance evidence is shown invalid.
+- Completed this session: P0.10, P0.11, P0.12, P1.13, P1.14.
+- Remaining highest-priority unchecked task: P1.15 (ADRs for core contracts).
+- Blockers: none.
+- Immediate next action: add ADR index and initial accepted ADRs for pipeline/data-model/interface contracts.
+- Continuity handoff: continue strictly top-down at P1.15; then P1.16+ in order if acceptance criteria are met.
+- Do not repeat next session: reworking P0.10–P1.14 unless new failing evidence indicates regressions in runbook/CI artifacts/policy/static-analysis/mutation coverage.
