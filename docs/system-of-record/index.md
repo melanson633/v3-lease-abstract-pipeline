@@ -13,3 +13,5 @@ Canonical edit map for harness-readiness and internal document/data workflow.
 
 - **Harness quality gate policy (Source of Truth):** `docs/harness-quality-gates.md`
 - **Failure triage runbook (Source of Truth):** `docs/runbooks/failure-triage.md`
+
+- **Dependency + secrets policy (Source of Truth):** `docs/security/dependency-secrets-policy.md`

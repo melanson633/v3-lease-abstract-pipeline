@@ -24,14 +24,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e '.[dev]'
 
-      - name: Format check (ruff format)
-        run: ruff format --check .
+      - name: Static analysis (ruff + mypy)
+        run: ./scripts/static_analysis.sh
 
-      - name: Lint check (ruff)
-        run: ruff check .
-
-      - name: Type check (mypy)
-        run: mypy leasegpt
+      - name: Dependency integrity check
+        run: python -m pip check
 
       - name: Unit tests + coverage gate
         run: pytest -q --cov=leasegpt.pipeline --cov=leasegpt.cli --cov-report=term-missing --cov-report=xml --cov-fail-under=60
@@ -41,6 +38,24 @@ jobs:
 
       - name: Required docs policy check
         run: python scripts/check_required_docs.py
+
+      - name: Generate validation artifacts
+        run: |
+          mkdir -p .tmp/ci-artifacts/quality-gates
+          python -m leasegpt.cli eval .claude/skills/lease-eval/fixtures/golden_ol_a1/lease_state.json \
+            --output-report .tmp/ci-artifacts/quality-gates/conformance_report.json \
+            --output-summary .tmp/ci-artifacts/quality-gates/conformance_summary.md
+          python -m leasegpt.cli diff .claude/skills/lease-eval/fixtures/golden_ol_a1/lease_state.json \
+            --output-report .tmp/ci-artifacts/quality-gates/diff_report.md \
+            --output-manifest .tmp/ci-artifacts/quality-gates/diff_manifest.json
+
+      - name: Upload validation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-gates-validation-artifacts
+          path: .tmp/ci-artifacts/quality-gates
+          if-no-files-found: error
+          retention-days: 14
 
   harness-smoke:
     name: harness-smoke (deterministic offline)
@@ -59,5 +74,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e '.[dev]'
 
+      - name: Dependency integrity check
+        run: python -m pip check
+
       - name: Run harness smoke
         run: ./scripts/harness_smoke.sh
+
+      - name: Upload harness smoke artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: harness-smoke-validation-artifacts
+          path: .tmp/harness-smoke/offline
+          if-no-files-found: error
+          retention-days: 14

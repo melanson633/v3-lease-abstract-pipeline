@@ -27,6 +27,12 @@ REQUIRED_DOCS: dict[Path, list[str]] = {
         "# Failure Triage Runbook",
         "## Decision Flow (Summary)",
     ],
+    Path("docs/security/dependency-secrets-policy.md"): [
+        "# Dependency and Secrets Policy",
+        "## Provider Key Handling",
+        "## Redaction Rules",
+        "## CI / Security Check Alignment",
+    ],
 }
 
 
